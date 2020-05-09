@@ -43,6 +43,17 @@ function insult_generator(col1, col2, col3) {
     return 'Thou ' + insult1 + ' ' + insult2 + ' ' + insult3 + '!';
 }
 
+function copyDivToClipboard() {
+    var range = document.createRange();
+    range.selectNode(document.getElementById("quote"));
+    window.getSelection().removeAllRanges(); // clear current selection
+    window.getSelection().addRange(range); // to select text
+    document.execCommand("copy");
+    window.getSelection().removeAllRanges();// to deselect
+}
+ 
+
 function display() {
     document.getElementById("quote").innerHTML = (insult_generator(column1, column2, column3));
+    copyDivToClipboard();
 }
